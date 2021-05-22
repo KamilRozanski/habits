@@ -6,7 +6,11 @@ body {
 	margin: 0px;
 	padding: 0px;
 }
+
 .welcome {
+	display: flex;
+	justify-content: center;
+	align-items: flex-end;
 	position: relative;
 	top: 0px;
 	right: 0px;
@@ -43,10 +47,7 @@ body {
 	outline: none;
 }
 .welcome__submit__button {
-	position: absolute;
-	top: 75vh;
-	left: 50vw;
-	transform: translateX(-50%);
+	margin-bottom: 100px;
 	width: 200px;
 	padding: 5px;
 	text-align: center;
@@ -55,9 +56,11 @@ body {
 	outline: none;
 	cursor: pointer;
 	color: gray;
+	transition: .1s ease-in-out;
 }
-.welcome__submit__button {
-	
+.welcome__submit__button:hover {
+	color: #096f84;
+	transform: scale(1.2);
 }
 
 .calendar {
