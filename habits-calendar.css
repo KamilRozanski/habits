@@ -9,36 +9,25 @@ body {
 
 .welcome {
 	display: flex;
-	justify-content: center;
-	align-items: flex-end;
-	position: relative;
-	top: 0px;
-	right: 0px;
+	justify-content: flex-start;
+	flex-direction: column;
 	background-image: url(img/welcome.png);
 	background-position: center;
 	color: rgb(228, 230, 230);
 	height: 100vh;
 }
 .welcome__header {
-	position: absolute;
-	top: 35vh;
-	left: 5vw;
-	margin: 0 10px;
+	align-items: flex-start;
+	margin: 100px 50px 50px 50px;
 }
 .welcome__input__container {
-	position: absolute;
 	display: flex;
 	flex-direction: column;
-	top: 45vh;
-	left: 5vw;
-	margin: 0 10px;
+	margin: 50px 0 50px 50px;
 }
 
-.welcome__label {
-	margin: 10px;
-}
 .welcome__input {
-	margin: 10px;
+	margin-top: 30px;
 	padding: 5px;
 	width: 250px;
 	border: none;
@@ -46,8 +35,13 @@ body {
 	text-align: center;
 	outline: none;
 }
+.welcome__submit {
+	display: flex;
+	justify-content: center;
+	text-decoration: none;
+	margin-top: 50px;
+}
 .welcome__submit__button {
-	margin-bottom: 100px;
 	width: 200px;
 	padding: 5px;
 	text-align: center;
@@ -64,7 +58,7 @@ body {
 }
 
 .calendar {
-	display: none;
+	/* display: none; */
 }
 
 /* Month header */

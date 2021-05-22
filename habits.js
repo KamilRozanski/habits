@@ -4,8 +4,8 @@ const sumbitButton = document.querySelector(".welcome__submit__button")
 let imputValue = ""
 sumbitButton.addEventListener("click", function () {
     getInputVal()
-    hideWelcomePage()
-    showCalendar()
+    // hideWelcomePage()
+    // showCalendar()
 })
 
 function getInputVal() {
