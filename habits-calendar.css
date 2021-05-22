@@ -6,6 +6,32 @@ body {
 	margin: 0px;
 	padding: 0px;
 }
+.welcome {
+	position: relative;
+	top: 0px;
+	right: 0px;
+	background-image: url(img/welcome.png);
+	background-position: center;
+	/* background-attachment: fixed; */
+	height: 100vh;
+}
+.welcome__header {
+	top: 35vh;
+	left: 5vw;
+	margin: 0 10px;
+	color: rgb(228, 230, 230);
+	position: absolute;
+}
+.welcome__input {
+	position: absolute;
+	top: 45vh;
+	left: 5vw;
+	margin: 0 10px;
+}
+
+.calendar {
+	display: none;
+}
 
 /* Month header */
 .month {
