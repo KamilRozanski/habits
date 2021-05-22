@@ -8,7 +8,6 @@ body {
 }
 .welcome {
 	position: relative;
-
 	top: 0px;
 	right: 0px;
 	background-image: url(img/welcome.png);
@@ -41,6 +40,24 @@ body {
 	border: none;
 	border-radius: 5px;
 	text-align: center;
+	outline: none;
+}
+.welcome__submit__button {
+	position: absolute;
+	top: 75vh;
+	left: 50vw;
+	transform: translateX(-50%);
+	width: 200px;
+	padding: 5px;
+	text-align: center;
+	border: none;
+	border-radius: 5px;
+	outline: none;
+	cursor: pointer;
+	color: gray;
+}
+.welcome__submit__button {
+	
 }
 
 .calendar {
