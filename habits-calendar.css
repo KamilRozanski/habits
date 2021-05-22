@@ -8,25 +8,39 @@ body {
 }
 .welcome {
 	position: relative;
+
 	top: 0px;
 	right: 0px;
 	background-image: url(img/welcome.png);
 	background-position: center;
-	/* background-attachment: fixed; */
+	color: rgb(228, 230, 230);
 	height: 100vh;
 }
 .welcome__header {
+	position: absolute;
 	top: 35vh;
 	left: 5vw;
 	margin: 0 10px;
-	color: rgb(228, 230, 230);
-	position: absolute;
 }
-.welcome__input {
+.welcome__input__container {
 	position: absolute;
+	display: flex;
+	flex-direction: column;
 	top: 45vh;
 	left: 5vw;
 	margin: 0 10px;
+}
+
+.welcome__label {
+	margin: 10px;
+}
+.welcome__input {
+	margin: 10px;
+	padding: 5px;
+	width: 250px;
+	border: none;
+	border-radius: 5px;
+	text-align: center;
 }
 
 .calendar {
