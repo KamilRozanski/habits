@@ -1,18 +1,18 @@
 const input = document.querySelector(".welcome__input")
 const sumbitButton = document.querySelector(".welcome__submit__button")
 
-let inputValue = input.value
+// let inputValue = input.value
 
-sumbitButton.addEventListener("click", function (e) {
-    if (input.value != "") {
-        e.preventDefault()
-        getInputVal()
-        hideWelcomePage()
-        showCalendar()
-        // console.log(input.value)
-    }
+// sumbitButton.addEventListener("click", function (e) {
+//     if (input.value != "") {
+//         e.preventDefault()
+//         getInputVal()
+//         hideWelcomePage()
+//         showCalendar()
+//         // console.log(input.value)
+//     }
 
-})
+// })
 
 function getInputVal() {
     inputVal = input.value
@@ -29,4 +29,20 @@ function showCalendar() {
     calendar.style.display = "block"
 }
 
-console.log(input.value + "value")
+
+//calendar
+const myDate = new Date();
+
+
+let day = myDate.getDate()
+let month = myDate.getMonth() + 1
+let year = myDate.getFullYear()
+
+const monthNamesArr = ["January", "February", "March", "April", "May", "June", "July",
+    "August", "September", "October", "November", "December"
+];
+
+
+const currenMonth = document.querySelector(".calendar__current__date")
+currenMonth.innerHTML = `${day}/${(monthNamesArr[month -1])}/${year}`
+console.log(day, month, year)

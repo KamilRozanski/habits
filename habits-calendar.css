@@ -59,10 +59,15 @@ body {
 }
 
 .calendar {
-	display: none;
+	/* display: none; */
 	height: 100vh;
 }
-
+.calendar__current__date {
+	padding: 10px;
+}
+.month__current__month {
+	padding-top: 50px;
+}
 /* Month header */
 .month {
 	padding: 70px 25px;
