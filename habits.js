@@ -1,16 +1,22 @@
-const imput = document.querySelector("#habit")
+const input = document.querySelector(".welcome__input")
 const sumbitButton = document.querySelector(".welcome__submit__button")
 
-let imputValue = ""
-sumbitButton.addEventListener("click", function () {
-    getInputVal()
-    // hideWelcomePage()
-    // showCalendar()
+let inputValue = input.value
+
+sumbitButton.addEventListener("click", function (e) {
+    if (input.value != "") {
+        e.preventDefault()
+        getInputVal()
+        hideWelcomePage()
+        showCalendar()
+        // console.log(input.value)
+    }
+
 })
 
 function getInputVal() {
-    imputVal = imput.value
-    console.log(imputVal)
+    inputVal = input.value
+    return inputValue
 }
 
 function hideWelcomePage() {
@@ -22,3 +28,5 @@ function showCalendar() {
     const calendar = document.querySelector(".calendar")
     calendar.style.display = "block"
 }
+
+console.log(input.value + "value")
