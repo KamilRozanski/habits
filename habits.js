@@ -42,7 +42,22 @@ const monthNamesArr = ["January", "February", "March", "April", "May", "June", "
     "August", "September", "October", "November", "December"
 ];
 
-
 const currenMonth = document.querySelector(".calendar__current__date")
 currenMonth.innerHTML = `${day}/${(monthNamesArr[month -1])}/${year}`
-console.log(day, month, year)
+
+function currentDay() {
+    const currentDay = document.querySelectorAll(".days > li")
+    const currentDaySpan = document.createElement("span")
+
+    for (let i = 0; i <= currentDay.length; i++) {
+        if (i === day) {
+            currentDay[day - 1].innerHTML = ""
+            currentDay[day - 1].appendChild(currentDaySpan).innerHTML = `${day}`
+            currentDaySpan.classList.add("active")
+
+        }
+    }
+}
+currentDay()
+
+// console.log(day, month, year)
