@@ -60,4 +60,14 @@ function currentDay() {
 }
 currentDay()
 
-// console.log(day, month, year)
+
+
+
+//change months
+
+const prevmonth = document.querySelector(".prev")
+const nextmonth = document.querySelector(".next")
+
+prevmonth.addEventListener("click", function () {
+    console.log("elo")
+})
