@@ -1,18 +1,18 @@
 const input = document.querySelector(".welcome__input")
 const sumbitButton = document.querySelector(".welcome__submit__button")
 
-// let inputValue = input.value
+let inputValue = input.value
 
-// sumbitButton.addEventListener("click", function (e) {
-//     if (input.value != "") {
-//         e.preventDefault()
-//         getInputVal()
-//         hideWelcomePage()
-//         showCalendar()
-//         // console.log(input.value)
-//     }
+sumbitButton.addEventListener("click", function (e) {
+    if (input.value != "") {
+        e.preventDefault()
+        getInputVal()
+        hideWelcomePage()
+        showCalendar()
+        // console.log(input.value)
+    }
 
-// })
+})
 
 function getInputVal() {
     inputVal = input.value
