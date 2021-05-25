@@ -101,24 +101,30 @@ prevmonth.addEventListener("click", function () {
         month--
     }
     if (month === 5) {
+        currentDay()
         return currenMonth.innerHTML = `${day}/${(monthNamesArr[month -1])}/${year}`
+
     } else {
         currenMonth.innerHTML = `${(monthNamesArr[month -1])}/${year}`
     }
     lastDay = new Date(year, month, 0).getDate()
     createCalendarDays()
+
 })
 nextmonth.addEventListener("click", function () {
     if (month >= 1 && month < 12) {
         month++
     }
     if (month === 5) {
+        currentDay()
         return currenMonth.innerHTML = `${day}/${(monthNamesArr[month -1])}/${year}`
+
     } else {
         currenMonth.innerHTML = `${(monthNamesArr[month -1])}/${year}`
     }
     lastDay = new Date(year, month, 0).getDate()
     createCalendarDays()
+
 
 })
 
@@ -126,6 +132,7 @@ nextmonth.addEventListener("click", function () {
 
 // clickable days
 
+// console.log(liDays)
 
 function clickOnDays() {
     liDays.forEach(el => {
