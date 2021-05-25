@@ -10,6 +10,7 @@ let day = myDate.getDate()
 let month = myDate.getMonth() + 1
 let year = myDate.getFullYear()
 const lastDay = new Date(year, month, 0).getDate()
+const firstDay = new Date(year, month, 0).getDay()
 
 const monthNamesArr = ["January", "February", "March", "April", "May", "June", "July",
     "August", "September", "October", "November", "December"
@@ -18,7 +19,7 @@ const monthNamesArr = ["January", "February", "March", "April", "May", "June", "
 //create calendar days from 1 to 31 
 
 
-console.log(myDate, lastDay)
+// console.log(day, firstDay)
 let days = ""
 for (let i = 1; i <= lastDay; i++) {
     days += `<li class ="days__li">${i}</li>`
@@ -27,18 +28,18 @@ for (let i = 1; i <= lastDay; i++) {
 const liDays = document.querySelectorAll(".days__li")
 
 
-// let inputValue = input.value
+let inputValue = input.value
 
-// sumbitButton.addEventListener("click", function (e) {
-//     if (input.value != "") {
-//         e.preventDefault()
-//         getInputVal()
-//         hideWelcomePage()
-//         showCalendar()
-//         // console.log(input.value)
-//     }
+sumbitButton.addEventListener("click", function (e) {
+    if (input.value != "") {
+        e.preventDefault()
+        getInputVal()
+        hideWelcomePage()
+        showCalendar()
+        // console.log(input.value)
+    }
 
-// })
+})
 
 function getInputVal() {
     inputVal = input.value
@@ -119,6 +120,10 @@ nextmonth.addEventListener("click", function () {
 function clickOnDays() {
     liDays.forEach(el => {
         el.addEventListener("click", () => {
+            let habit = document.createElement("div")
+            habit.innerHTML = "habit"
+            console.log(habit)
+            el.appendChild(habit)
             el.classList.toggle("day__active")
         })
     })
