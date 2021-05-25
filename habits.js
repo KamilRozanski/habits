@@ -89,3 +89,14 @@ nextmonth.addEventListener("click", function () {
 
 
 //clickable days
+
+function clickOnDays() {
+    daysLi.forEach(el => {
+        el.addEventListener("click", () => {
+            el.classList.toggle("day__active")
+            console.log("click")
+        })
+    })
+}
+
+clickOnDays()
