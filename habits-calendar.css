@@ -59,7 +59,9 @@ body {
 }
 
 .calendar {
-	display: none;
+	/* display: none; */
+	display: flex;
+	flex-direction: column;
 	height: 100vh;
 }
 .calendar__current__date {
@@ -70,15 +72,17 @@ body {
 }
 /* Month header */
 .month {
-	padding: 70px 25px;
+	/* padding-top: 100px; */
 	background: #057587;
 	text-align: center;
+	min-height: 200px;
 }
 
 /* Month list */
 .month ul {
+	padding: 60px 10px 0 10px;
 	margin: 0;
-	padding: 0;
+	text-decoration: none;
 }
 
 .month ul li {

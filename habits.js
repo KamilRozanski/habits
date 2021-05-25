@@ -1,16 +1,22 @@
 const input = document.querySelector(".welcome__input")
+let inputVal = ""
 const sumbitButton = document.querySelector(".welcome__submit__button")
 const currenMonth = document.querySelector(".calendar__current__date")
 const calendarHeader = document.querySelector(".calendar__header")
 const ulDays = document.querySelector(".days")
+let liDays;
+
+
 
 
 const myDate = new Date();
 let day = myDate.getDate()
 let month = myDate.getMonth() + 1
 let year = myDate.getFullYear()
-const lastDay = new Date(year, month, 0).getDate()
-const firstDay = new Date(year, month, 0).getDay()
+let lastDay = new Date(year, month, 0).getDate()
+
+
+
 
 const monthNamesArr = ["January", "February", "March", "April", "May", "June", "July",
     "August", "September", "October", "November", "December"
@@ -18,32 +24,37 @@ const monthNamesArr = ["January", "February", "March", "April", "May", "June", "
 
 //create calendar days from 1 to 31 
 
-
-// console.log(day, firstDay)
-let days = ""
-for (let i = 1; i <= lastDay; i++) {
-    days += `<li class ="days__li">${i}</li>`
-    ulDays.innerHTML = days
+function showNextMonth() {
+    console.log(month)
+    return month++
 }
-const liDays = document.querySelectorAll(".days__li")
 
-
-let inputValue = input.value
-
-sumbitButton.addEventListener("click", function (e) {
-    if (input.value != "") {
-        e.preventDefault()
-        getInputVal()
-        hideWelcomePage()
-        showCalendar()
-        // console.log(input.value)
+function createCalendarDays() {
+    let days = ""
+    for (let i = 1; i <= lastDay; i++) {
+        days += `<li class ="days__li">${i}</li>`
+        ulDays.innerHTML = days
+        liDays = document.querySelectorAll(".days__li")
     }
+}
 
-})
+createCalendarDays()
+
+
+// sumbitButton.addEventListener("click", function (e) {
+//     if (input.value != "") {
+//         e.preventDefault()
+//         getInputVal()
+//         hideWelcomePage()
+//         showCalendar()
+//     }
+
+// })
 
 function getInputVal() {
     inputVal = input.value
-    return inputValue
+    // console.log(input.value)
+    return inputVal
 }
 
 function hideWelcomePage() {
@@ -58,11 +69,6 @@ function showCalendar() {
 
 
 //calendar
-
-
-
-
-
 
 function currentDay() {
     const currentDay = document.querySelectorAll(".days > li")
@@ -90,6 +96,7 @@ const prevmonth = document.querySelector(".prev")
 const nextmonth = document.querySelector(".next")
 
 prevmonth.addEventListener("click", function () {
+
     if (month > 1) {
         month--
     }
@@ -98,7 +105,8 @@ prevmonth.addEventListener("click", function () {
     } else {
         currenMonth.innerHTML = `${(monthNamesArr[month -1])}/${year}`
     }
-
+    lastDay = new Date(year, month, 0).getDate()
+    createCalendarDays()
 })
 nextmonth.addEventListener("click", function () {
     if (month >= 1 && month < 12) {
@@ -109,7 +117,8 @@ nextmonth.addEventListener("click", function () {
     } else {
         currenMonth.innerHTML = `${(monthNamesArr[month -1])}/${year}`
     }
-
+    lastDay = new Date(year, month, 0).getDate()
+    createCalendarDays()
 
 })
 
@@ -117,12 +126,12 @@ nextmonth.addEventListener("click", function () {
 
 // clickable days
 
+
 function clickOnDays() {
     liDays.forEach(el => {
         el.addEventListener("click", () => {
             let habit = document.createElement("div")
-            habit.innerHTML = "habit"
-            console.log(habit)
+            habit.innerHTML = inputVal
             el.appendChild(habit)
             el.classList.toggle("day__active")
         })
