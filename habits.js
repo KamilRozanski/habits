@@ -5,9 +5,22 @@ const calendarHeader = document.querySelector(".calendar__header")
 const ulDays = document.querySelector(".days")
 
 
+const myDate = new Date();
+let day = myDate.getDate()
+let month = myDate.getMonth() + 1
+let year = myDate.getFullYear()
+const lastDay = new Date(year, month, 0).getDate()
+
+const monthNamesArr = ["January", "February", "March", "April", "May", "June", "July",
+    "August", "September", "October", "November", "December"
+];
+
 //create calendar days from 1 to 31 
+
+
+console.log(myDate, lastDay)
 let days = ""
-for (let i = 1; i <= 31; i++) {
+for (let i = 1; i <= lastDay; i++) {
     days += `<li class ="days__li">${i}</li>`
     ulDays.innerHTML = days
 }
@@ -44,14 +57,10 @@ function showCalendar() {
 
 
 //calendar
-const myDate = new Date();
-let day = myDate.getDate()
-let month = myDate.getMonth() + 1
-let year = myDate.getFullYear()
 
-const monthNamesArr = ["January", "February", "March", "April", "May", "June", "July",
-    "August", "September", "October", "November", "December"
-];
+
+
+
 
 
 function currentDay() {
