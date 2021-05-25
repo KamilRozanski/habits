@@ -1,7 +1,17 @@
 const input = document.querySelector(".welcome__input")
 const sumbitButton = document.querySelector(".welcome__submit__button")
 const currenMonth = document.querySelector(".calendar__current__date")
-const daysLi = document.querySelectorAll(".days > li")
+const calendarHeader = document.querySelector(".calendar__header")
+const ulDays = document.querySelector(".days")
+
+
+//create calendar days from 1 to 31 
+let days = ""
+for (let i = 1; i <= 31; i++) {
+    days += `<li class ="days__li">${i}</li>`
+    ulDays.innerHTML = days
+}
+const liDays = document.querySelectorAll(".days__li")
 
 
 // let inputValue = input.value
@@ -70,31 +80,37 @@ const prevmonth = document.querySelector(".prev")
 const nextmonth = document.querySelector(".next")
 
 prevmonth.addEventListener("click", function () {
-    let cunter = month
     if (month > 1) {
         month--
     }
-    currenMonth.innerHTML = `${day}/${(monthNamesArr[month -1])}/${year}`
-    console.log(cunter)
+    if (month === 5) {
+        return currenMonth.innerHTML = `${day}/${(monthNamesArr[month -1])}/${year}`
+    } else {
+        currenMonth.innerHTML = `${(monthNamesArr[month -1])}/${year}`
+    }
+
 })
 nextmonth.addEventListener("click", function () {
-    let cunter = month
     if (month >= 1 && month < 12) {
         month++
     }
-    currenMonth.innerHTML = `${day}/${(monthNamesArr[month -1])}/${year}`
-    console.log(cunter)
+    if (month === 5) {
+        return currenMonth.innerHTML = `${day}/${(monthNamesArr[month -1])}/${year}`
+    } else {
+        currenMonth.innerHTML = `${(monthNamesArr[month -1])}/${year}`
+    }
+
+
 })
 
 
 
-//clickable days
+// clickable days
 
 function clickOnDays() {
-    daysLi.forEach(el => {
+    liDays.forEach(el => {
         el.addEventListener("click", () => {
             el.classList.toggle("day__active")
-            console.log("click")
         })
     })
 }
