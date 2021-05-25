@@ -60,19 +60,15 @@ body {
 
 .calendar {
 	/* display: none; */
-	display: flex;
 	flex-direction: column;
 	height: 100vh;
 }
-.calendar__current__date {
-	padding: 10px;
-}
+
 .month__current__month {
 	padding-top: 50px;
 }
 /* Month header */
 .month {
-	/* padding-top: 100px; */
 	background: #057587;
 	text-align: center;
 	min-height: 200px;
@@ -80,7 +76,7 @@ body {
 
 /* Month list */
 .month ul {
-	padding: 60px 10px 0 10px;
+	padding: 76px 10px 0 10px;
 	margin: 0;
 	text-decoration: none;
 }
@@ -108,8 +104,10 @@ body {
 
 /* Weekdays (Mon-Sun) */
 .weekdays {
+	display: flex;
+	justify-content: space-between;
 	margin: 0;
-	padding: 10px 0;
+	padding: 10px 10px;
 	background-color: #ddd;
 }
 
@@ -123,16 +121,17 @@ body {
 /* Days (1-31) */
 
 .days {
-	padding: 30px 0;
 	background: #eee;
 	margin: 0px;
+	padding-left: 0px;
+	padding: 10px 10px;
 }
 
-.days li {
+.days__li {
 	list-style-type: none;
 	display: inline-block;
 	width: 13.6%;
-	padding: 10px;
+	padding: 10px 0px;
 	text-align: center;
 	margin-bottom: 5px;
 	font-size: 12px;
@@ -140,15 +139,26 @@ body {
 	transition: .2s ease-in-out;
 	cursor: pointer;
 }
+.days__li__previus {
+	list-style-type: none;
+	display: inline-block;
+	width: 13.6%;
+	padding: 10px 0px;
+	text-align: center;
+	margin-bottom: 5px;
+	font-size: 12px;
+	transition: .2s ease-in-out;
+	cursor: pointer;
+	color: lightgrey;
+}
 
 /* Highlight the "current" day */
-.days li .active {
+.days li .active__day {
 	padding: 5px;
 	background: #1abc9c;
 	border-radius: 50%;
 }
 .day__active {
-	width: 50px;
 	background-color: RGBA(111, 216, 80, 0.65);
 	border-radius: 5px;
 }

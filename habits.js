@@ -14,8 +14,9 @@ let day = myDate.getDate()
 let month = myDate.getMonth() + 1
 let year = myDate.getFullYear()
 let lastDay = new Date(year, month, 0).getDate()
-
-
+let lastDayOfPrevMonth = new Date(year, month - 1, 0).getDate()
+myDate.setDate(1)
+let firstDayIndex = myDate.getDay()
 
 
 const monthNamesArr = ["January", "February", "March", "April", "May", "June", "July",
@@ -25,60 +26,68 @@ const monthNamesArr = ["January", "February", "March", "April", "May", "June", "
 //create calendar days from 1 to 31 
 
 function showNextMonth() {
-    console.log(month)
+
     return month++
 }
 
+
 function createCalendarDays() {
     let days = ""
+    for (let n = firstDayIndex - 1; n > 0; n--) {
+        days += `<li class ="days__li__previus">${lastDayOfPrevMonth + 1 - n}</li>`
+        ulDays.innerHTML = days
+    }
+
     for (let i = 1; i <= lastDay; i++) {
         days += `<li class ="days__li">${i}</li>`
         ulDays.innerHTML = days
         liDays = document.querySelectorAll(".days__li")
     }
+
 }
 
 createCalendarDays()
 
 
-// sumbitButton.addEventListener("click", function (e) {
-//     if (input.value != "") {
-//         e.preventDefault()
-//         getInputVal()
-//         hideWelcomePage()
-//         showCalendar()
-//     }
 
-// })
+sumbitButton.addEventListener("click", function (e) {
+    if (input.value != "") {
+        e.preventDefault()
+        getInputVal()
+        hideWelcomePage()
+        showCalendar()
+    }
+
+})
 
 function getInputVal() {
     inputVal = input.value
-    // console.log(input.value)
     return inputVal
 }
 
 function hideWelcomePage() {
     const welcomePage = document.querySelector(".welcome")
     welcomePage.style.display = "none"
+
 }
 
 function showCalendar() {
     const calendar = document.querySelector(".calendar")
-    calendar.style.display = "block"
+    calendar.style.display = "flex"
 }
 
 
 //calendar
 
 function currentDay() {
-    const currentDay = document.querySelectorAll(".days > li")
+    const currentDay = document.querySelectorAll(".days__li")
     const currentDaySpan = document.createElement("span")
 
     for (let i = 0; i <= currentDay.length; i++) {
         if (i === day) {
             currentDay[day - 1].innerHTML = ""
             currentDay[day - 1].appendChild(currentDaySpan).innerHTML = `${day}`
-            currentDaySpan.classList.add("active")
+            currentDaySpan.classList.add("active__day")
 
         }
     }
@@ -109,6 +118,7 @@ prevmonth.addEventListener("click", function () {
     }
     lastDay = new Date(year, month, 0).getDate()
     createCalendarDays()
+    clickOnDays()
 
 })
 nextmonth.addEventListener("click", function () {
@@ -124,15 +134,14 @@ nextmonth.addEventListener("click", function () {
     }
     lastDay = new Date(year, month, 0).getDate()
     createCalendarDays()
-
-
+    clickOnDays()
 })
 
 
 
 // clickable days
 
-// console.log(liDays)
+
 
 function clickOnDays() {
     liDays.forEach(el => {
