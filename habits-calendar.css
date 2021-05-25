@@ -59,7 +59,7 @@ body {
 }
 
 .calendar {
-	display: none;
+	/* display: none; */
 	height: 100vh;
 }
 .calendar__current__date {
