@@ -19,18 +19,13 @@ myDate.setDate(1)
 let firstDayIndex = myDate.getDay()
 
 
+
+
 const monthNamesArr = ["January", "February", "March", "April", "May", "June", "July",
     "August", "September", "October", "November", "December"
 ];
 
 //create calendar days from 1 to 31 
-
-function showNextMonth() {
-
-    return month++
-}
-
-
 function createCalendarDays() {
     let days = ""
     for (let n = firstDayIndex - 1; n > 0; n--) {
@@ -43,6 +38,8 @@ function createCalendarDays() {
         ulDays.innerHTML = days
         liDays = document.querySelectorAll(".days__li")
     }
+
+    lastDay = new Date(year, month, 0).getDate()
 
 }
 
@@ -101,6 +98,7 @@ currentDay()
 currenMonth.innerHTML = `${day}/${(monthNamesArr[month -1])}/${year}`
 
 
+
 const prevmonth = document.querySelector(".prev")
 const nextmonth = document.querySelector(".next")
 
@@ -109,14 +107,14 @@ prevmonth.addEventListener("click", function () {
     if (month > 1) {
         month--
     }
-    if (month === 5) {
+    if (month === myDate.getMonth() + 1) {
         currentDay()
         return currenMonth.innerHTML = `${day}/${(monthNamesArr[month -1])}/${year}`
 
     } else {
         currenMonth.innerHTML = `${(monthNamesArr[month -1])}/${year}`
     }
-    lastDay = new Date(year, month, 0).getDate()
+
     createCalendarDays()
     clickOnDays()
 
@@ -125,14 +123,13 @@ nextmonth.addEventListener("click", function () {
     if (month >= 1 && month < 12) {
         month++
     }
-    if (month === 5) {
+    if (month === myDate.getMonth() + 1) {
         currentDay()
         return currenMonth.innerHTML = `${day}/${(monthNamesArr[month -1])}/${year}`
 
     } else {
         currenMonth.innerHTML = `${(monthNamesArr[month -1])}/${year}`
     }
-    lastDay = new Date(year, month, 0).getDate()
     createCalendarDays()
     clickOnDays()
 })

@@ -9,7 +9,7 @@ body {
 }
 
 .welcome {
-	display: flex;
+	display: none;
 	justify-content: flex-start;
 	flex-direction: column;
 	background-image: url(img/welcome.png);
@@ -71,7 +71,7 @@ body {
 .month {
 	background: #057587;
 	text-align: center;
-	min-height: 200px;
+	min-height: 100px;
 }
 
 /* Month list */
