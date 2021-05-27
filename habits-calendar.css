@@ -21,10 +21,16 @@ body {
 	align-items: flex-start;
 	margin: 100px 50px 50px 50px;
 }
+.welcome__form {
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+}
 .welcome__input__container {
 	display: flex;
+	justify-content: flex-start;
+	align-items: center;
 	flex-direction: column;
-	margin: 50px 0 50px 50px;
 }
 
 .welcome__input {
@@ -44,6 +50,7 @@ body {
 }
 .welcome__submit__button {
 	width: 200px;
+	margin-top: 20px;
 	padding: 5px;
 	text-align: center;
 	border: none;
