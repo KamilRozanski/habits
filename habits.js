@@ -24,17 +24,17 @@ let year = myDate.getFullYear()
 const monthNamesArr = ["January", "February", "March", "April", "May", "June", "July",
     "August", "September", "October", "November", "December"
 ];
-//welcome section
-// sumbitButton.addEventListener("click", function (e) {
-//     if (input.value != "") {
-//         e.preventDefault()
-//         getInputVal()
-//         hideWelcomePage()
-//         showCalendar()
-//     }
-//     yourHabitHeader.innerHTML = `Your habit is ${inputVal}`
+// welcome section
+sumbitButton.addEventListener("click", function (e) {
+    if (input.value != "") {
+        e.preventDefault()
+        getInputVal()
+        hideWelcomePage()
+        showCalendar()
+    }
+    yourHabitHeader.innerHTML = `Your habit is ${inputVal}`
 
-// })
+})
 
 function getInputVal() {
     inputVal = input.value
@@ -114,7 +114,7 @@ prevmonth.addEventListener("click", function () {
     }
     headerCalendarDate.innerHTML = `${(monthNamesArr[month-1])}/${year}`
 
-    // renderCalendar()
+    renderCalendar()
 
     myDate.setMonth(myDate.getMonth() - 1)
     clickOnDays()
@@ -126,7 +126,7 @@ nextmonth.addEventListener("click", function () {
     }
     headerCalendarDate.innerHTML = `${(monthNamesArr[month-1])}/${year}`
 
-    // renderCalendar()
+    renderCalendar()
 
     myDate.setMonth(myDate.getMonth() + 1)
     clickOnDays()
