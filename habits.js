@@ -6,6 +6,9 @@ const currenMonth = document.querySelector(".calendar__current__date")
 const calendarHeader = document.querySelector(".calendar__header")
 const ulDays = document.querySelector(".days")
 let liDays;
+const prevmonth = document.querySelector(".prev")
+const nextmonth = document.querySelector(".next")
+const headerCalendarDate = document.querySelector(".calendar__current__date")
 
 
 
@@ -15,27 +18,23 @@ const myDate = new Date();
 let day = myDate.getDate()
 let month = myDate.getMonth() + 1
 let year = myDate.getFullYear()
-let lastDay = new Date(year, month, 0).getDate()
-let lastDayOfPrevMonth = new Date(year, month - 1, 0).getDate()
-myDate.setDate(1)
-let firstDayIndex = myDate.getDay()
-const lastDayIndex = new Date(year, month, 0).getDay();
-const nextDays = 7 - lastDayIndex
+
+
 
 const monthNamesArr = ["January", "February", "March", "April", "May", "June", "July",
     "August", "September", "October", "November", "December"
 ];
 //welcome section
-sumbitButton.addEventListener("click", function (e) {
-    if (input.value != "") {
-        e.preventDefault()
-        getInputVal()
-        hideWelcomePage()
-        showCalendar()
-    }
-    yourHabitHeader.innerHTML = `Your habit is ${inputVal}`
+// sumbitButton.addEventListener("click", function (e) {
+//     if (input.value != "") {
+//         e.preventDefault()
+//         getInputVal()
+//         hideWelcomePage()
+//         showCalendar()
+//     }
+//     yourHabitHeader.innerHTML = `Your habit is ${inputVal}`
 
-})
+// })
 
 function getInputVal() {
     inputVal = input.value
@@ -52,12 +51,22 @@ function showCalendar() {
     const calendar = document.querySelector(".calendar")
     calendar.style.display = "flex"
 }
-
-
+//hearde date generation
+function renderHeaderDate(next) {
+    const headerCalendarDate = document.querySelector(".calendar__current__date")
+    headerCalendarDate.innerHTML = monthNamesArr[month++]
+}
+renderHeaderDate()
 //calendar
 function renderCalendar() {
+    let lastDay = new Date(year, month, 0).getDate()
+    let lastDayOfPrevMonth = new Date(year, month - 1, 0).getDate()
+    myDate.setDate(1)
+    let firstDayIndex = myDate.getDay()
+    const lastDayIndex = new Date(year, month, 0).getDay();
+    const nextDays = 7 - lastDayIndex
     let days = ""
-    // console.log(firstDayIndex = myDate.getDay(), myDate.setDate(1))
+
     for (let n = firstDayIndex - 1; n > 0; n--) {
         days += `<li class ="days__li__previus">${lastDayOfPrevMonth + 1 - n}</li>`
         ulDays.innerHTML = days
@@ -74,7 +83,9 @@ function renderCalendar() {
         ulDays.innerHTML = days
         liDays = document.querySelectorAll(".days__li")
     }
-    lastDay = new Date(year, month, 0).getDate()
+    if (day && month && year) {
+        selectCurrentDay()
+    }
 }
 renderCalendar()
 
@@ -91,44 +102,27 @@ function selectCurrentDay() {
         }
     }
 }
-selectCurrentDay()
+
 
 //change months
 
 currenMonth.innerHTML = `${day}/${(monthNamesArr[month -1])}/${year}`
 
-const prevmonth = document.querySelector(".prev")
-const nextmonth = document.querySelector(".next")
+
 
 prevmonth.addEventListener("click", function () {
+
+
     myDate.setMonth(myDate.getMonth() - 1)
-    if (month > 1) {
-        month--
-    }
-    if (month === myDate.getMonth() + 1) {
-        currentDay()
-        return currenMonth.innerHTML = `${day}/${(monthNamesArr[month -1])}/${year}`
-
-    } else {
-        currenMonth.innerHTML = `${(monthNamesArr[month -1])}/${year}`
-    }
-
+    renderHeaderDate()
     renderCalendar()
     clickOnDays()
 
 })
 nextmonth.addEventListener("click", function () {
-    myDate.setMonth(myDate.getMonth() + 1)
-    if (month >= 1 && month < 12) {
-        month++
-    }
-    if (month === myDate.getMonth() + 1) {
-        currentDay()
-        return currenMonth.innerHTML = `${day}/${(monthNamesArr[month -1])}/${year}`
 
-    } else {
-        currenMonth.innerHTML = `${(monthNamesArr[month -1])}/${year}`
-    }
+    myDate.setMonth(myDate.getMonth() + 1)
+    renderHeaderDate()
     renderCalendar()
     clickOnDays()
 })
@@ -146,9 +140,9 @@ function clickOnDays() {
             if (el.childNodes.length <= 1) {
                 habit.innerHTML = inputVal
                 el.appendChild(habit)
-                console.log(habit.innerHTML)
+
             } else {
-                console.log("false")
+
             }
         })
     })
