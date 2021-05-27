@@ -74,6 +74,7 @@ body {
 .month {
 	background: #057587;
 	text-align: center;
+	min-height: 10vh;
 }
 
 /* Month list */

@@ -2,13 +2,13 @@ const input = document.querySelector(".welcome__input")
 let inputVal = ""
 const yourHabitHeader = document.querySelector(".your__habit")
 const sumbitButton = document.querySelector(".welcome__submit__button")
-const currenMonth = document.querySelector(".calendar__current__date")
 const calendarHeader = document.querySelector(".calendar__header")
 const ulDays = document.querySelector(".days")
 let liDays;
 const prevmonth = document.querySelector(".prev")
 const nextmonth = document.querySelector(".next")
 const headerCalendarDate = document.querySelector(".calendar__current__date")
+
 
 
 
@@ -51,12 +51,13 @@ function showCalendar() {
     const calendar = document.querySelector(".calendar")
     calendar.style.display = "flex"
 }
-//hearde date generation
-function renderHeaderDate(next) {
-    const headerCalendarDate = document.querySelector(".calendar__current__date")
-    headerCalendarDate.innerHTML = monthNamesArr[month++]
-}
-renderHeaderDate()
+
+
+
+
+
+
+
 //calendar
 function renderCalendar() {
     let lastDay = new Date(year, month, 0).getDate()
@@ -106,25 +107,30 @@ function selectCurrentDay() {
 
 //change months
 
-currenMonth.innerHTML = `${day}/${(monthNamesArr[month -1])}/${year}`
-
-
-
+headerCalendarDate.innerHTML = `${day}/${(monthNamesArr[month-1])}/${year}`
 prevmonth.addEventListener("click", function () {
+    if (month > 1) {
+        month--
+    }
+    headerCalendarDate.innerHTML = `${(monthNamesArr[month-1])}/${year}`
 
+    // renderCalendar()
 
     myDate.setMonth(myDate.getMonth() - 1)
-    renderHeaderDate()
-    renderCalendar()
     clickOnDays()
 
 })
 nextmonth.addEventListener("click", function () {
+    if (month < 12) {
+        month++
+    }
+    headerCalendarDate.innerHTML = `${(monthNamesArr[month-1])}/${year}`
+
+    // renderCalendar()
 
     myDate.setMonth(myDate.getMonth() + 1)
-    renderHeaderDate()
-    renderCalendar()
     clickOnDays()
+
 })
 
 
