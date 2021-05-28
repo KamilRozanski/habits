@@ -1,6 +1,7 @@
+
 const input = document.querySelector(".welcome__input")
 let inputVal = ""
-const yourHabitHeader = document.querySelector(".your__habit")
+const habitHeaderInput = document.querySelector(".your__habit__input")
 const sumbitButton = document.querySelector(".welcome__submit__button")
 const calendarHeader = document.querySelector(".calendar__header")
 const ulDays = document.querySelector(".days")
@@ -8,10 +9,6 @@ let liDays;
 const prevmonth = document.querySelector(".prev")
 const nextmonth = document.querySelector(".next")
 const headerCalendarDate = document.querySelector(".calendar__current__date")
-
-
-
-
 
 
 const myDate = new Date();
@@ -25,16 +22,16 @@ const monthNamesArr = ["January", "February", "March", "April", "May", "June", "
     "August", "September", "October", "November", "December"
 ];
 // welcome section
-// sumbitButton.addEventListener("click", function (e) {
-//     if (input.value != "") {
-//         e.preventDefault()
-//         getInputVal()
-//         hideWelcomePage()
-//         showCalendar()
-//     }
-//     yourHabitHeader.innerHTML = `Your habit is ${inputVal}`
+sumbitButton.addEventListener("click", function (e) {
+    if (input.value != "") {
+        e.preventDefault()
+        getInputVal()
+        // hideWelcomePage()
+        // showCalendar()
+    }
+    habitHeaderInput.innerHTML = `${inputVal}`
 
-// })
+})
 
 function getInputVal() {
     inputVal = input.value
@@ -51,12 +48,6 @@ function showCalendar() {
     const calendar = document.querySelector(".calendar")
     calendar.style.display = "flex"
 }
-
-
-
-
-
-
 
 //calendar
 function renderCalendar() {
