@@ -1,4 +1,3 @@
-
 const input = document.querySelector(".welcome__input")
 let inputVal = ""
 const habitHeaderInput = document.querySelector(".your__habit__input")
@@ -135,16 +134,15 @@ function clickOnDays() {
         el.addEventListener("click", () => {
             let habit = document.createElement("div")
             el.classList.toggle("habit__active")
-
-            if (el.childNodes.length <= 1) {
+            if (el.childNodes.length <= 1 && el.classList.contains("habit__active")) {
                 habit.innerHTML = inputVal
                 el.appendChild(habit)
-
             } else {
-
+                el.childNodes[1].remove()
             }
         })
     })
 }
 
 clickOnDays()
+
