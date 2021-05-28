@@ -25,16 +25,16 @@ const monthNamesArr = ["January", "February", "March", "April", "May", "June", "
     "August", "September", "October", "November", "December"
 ];
 // welcome section
-sumbitButton.addEventListener("click", function (e) {
-    if (input.value != "") {
-        e.preventDefault()
-        getInputVal()
-        hideWelcomePage()
-        showCalendar()
-    }
-    yourHabitHeader.innerHTML = `Your habit is ${inputVal}`
+// sumbitButton.addEventListener("click", function (e) {
+//     if (input.value != "") {
+//         e.preventDefault()
+//         getInputVal()
+//         hideWelcomePage()
+//         showCalendar()
+//     }
+//     yourHabitHeader.innerHTML = `Your habit is ${inputVal}`
 
-})
+// })
 
 function getInputVal() {
     inputVal = input.value
@@ -96,7 +96,7 @@ function selectCurrentDay() {
     const currentDaySpan = document.createElement("span")
 
     for (let i = 0; i <= currentDay.length; i++) {
-        if (i === day) {
+        if ((new Date).getDate() === day && (new Date).getMonth() + 1 === month && (new Date).getFullYear() === year) {
             currentDay[day - 1].innerHTML = ""
             currentDay[day - 1].appendChild(currentDaySpan).innerHTML = `${day}`
             currentDaySpan.classList.add("active__day")
@@ -111,24 +111,26 @@ headerCalendarDate.innerHTML = `${day}/${(monthNamesArr[month-1])}/${year}`
 prevmonth.addEventListener("click", function () {
     if (month > 1) {
         month--
+
+        myDate.setMonth(myDate.getMonth() - 1)
+        renderCalendar()
+        headerCalendarDate.innerHTML = `${(monthNamesArr[month-1])}/${year}`
     }
-    headerCalendarDate.innerHTML = `${(monthNamesArr[month-1])}/${year}`
 
-    renderCalendar()
 
-    myDate.setMonth(myDate.getMonth() - 1)
     clickOnDays()
 
 })
 nextmonth.addEventListener("click", function () {
     if (month < 12) {
         month++
+        myDate.setMonth(myDate.getMonth() + 1)
+        renderCalendar()
+        headerCalendarDate.innerHTML = `${(monthNamesArr[month-1])}/${year}`
+
+
     }
-    headerCalendarDate.innerHTML = `${(monthNamesArr[month-1])}/${year}`
 
-    renderCalendar()
-
-    myDate.setMonth(myDate.getMonth() + 1)
     clickOnDays()
 
 })
