@@ -137,12 +137,27 @@ function clickOnDays() {
             if (el.childNodes.length <= 1 && el.classList.contains("habit__active")) {
                 habit.innerHTML = inputVal
                 el.appendChild(habit)
+                saveTask(el)
+
             } else {
                 el.childNodes[1].remove()
             }
         })
+
     })
+
+
 }
 
 clickOnDays()
+const clickedTaksObj = {
+    clickedDay: clickedDay,
+    month: clickemonth,
+    year: clickeyear
+}
 
+function saveTask(el) {
+    console.log(el.childNodes[0])
+    clickedTaksObj.day = el.childNodes[0]
+    console.log(clickedTaksObj)
+}
