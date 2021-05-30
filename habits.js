@@ -150,14 +150,17 @@ function clickOnDays() {
 }
 
 clickOnDays()
-const clickedTaksObj = {
-    clickedDay: clickedDay,
-    month: clickemonth,
-    year: clickeyear
-}
+const clickedTaksArr = []
 
-function saveTask(el) {
-    console.log(el.childNodes[0])
-    clickedTaksObj.day = el.childNodes[0]
-    console.log(clickedTaksObj)
+
+function saveTask(cell) {
+    let clickedDay = cell.childNodes[0].textContent
+    clickedDay = parseInt(clickedDay)
+    clickedDay = [clickedDay, month, year]
+    // console.log(clickedDay, liDays[0].textContent)
+    liDays.forEach(day => (
+        console.log(day.textContent)
+    ))
+
+
 }
