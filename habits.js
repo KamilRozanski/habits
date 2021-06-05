@@ -16,7 +16,7 @@ let month = myDate.getMonth() + 1
 let year = myDate.getFullYear()
 
 
-
+let clickedDates = []
 const monthNamesArr = ["January", "February", "March", "April", "May", "June", "July",
     "August", "September", "October", "November", "December"
 ];
@@ -77,6 +77,7 @@ function renderCalendar() {
     if (day && month && year) {
         selectCurrentDay()
     }
+    console.log(clickedDates)
 }
 renderCalendar()
 
@@ -138,7 +139,7 @@ function clickOnDays() {
             if (el.childNodes.length <= 1 && el.classList.contains("habit__active")) {
                 habit.innerHTML = inputVal
                 el.appendChild(habit)
-                saveTask(el)
+                dateHasBeenClicked(el)
 
             } else {
                 el.childNodes[1].remove()
@@ -151,31 +152,18 @@ function clickOnDays() {
 }
 
 clickOnDays()
-const clickedTaksArr = []
 
 
-function saveTask(cell) {
+function dateHasBeenClicked(cell) {
     let clickedDay = cell.childNodes[0].textContent
     clickedDay = parseInt(clickedDay)
+    console.log("elo")
 
-    clickedTaksArr.push(clickedDay)
-
-    liDays.forEach(day => {
-
-        if (clickedTaksArr.includes(clickedDay)) {
-            // console.log(clickedTaksArr, clickedDay)
-            const dayInt = parseInt(day.textContent)
-            console.log(clickedTaksArr.includes(dayInt))
-            if (clickedTaksArr.includes(dayInt)) {
-                console.log(day.classList.add("habit__active"))
-                console.log(day)
-
-            }
-
-        }
-
-
+    clickedDates.forEach(el => {
+        el.push(clickedDay, month, year)
+        el.join("/")
+        console.log(el)
+        return el
     })
-
 
 }
