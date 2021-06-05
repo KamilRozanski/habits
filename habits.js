@@ -110,6 +110,7 @@ prevmonth.addEventListener("click", function () {
 
     clickOnDays()
 
+
 })
 nextmonth.addEventListener("click", function () {
     if (month < 12) {
@@ -158,13 +159,21 @@ function saveTask(cell) {
     clickedDay = parseInt(clickedDay)
 
     clickedTaksArr.push(clickedDay)
+
     liDays.forEach(day => {
 
-        // console.log(day.textContent, clickedTaksArr)
         if (clickedTaksArr.includes(clickedDay)) {
-            console.log(clickedTaksArr, clickedDay)
-            console.log(day.textContent)
+            // console.log(clickedTaksArr, clickedDay)
+            const dayInt = parseInt(day.textContent)
+            console.log(clickedTaksArr.includes(dayInt))
+            if (clickedTaksArr.includes(dayInt)) {
+                console.log(day.classList.add("habit__active"))
+                console.log(day)
+
+            }
+
         }
+
 
     })
 
