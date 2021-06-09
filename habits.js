@@ -77,7 +77,7 @@ function renderCalendar() {
     if (day && month && year) {
         selectCurrentDay()
     }
-    console.log(clickedDates)
+    // console.log(clickedDates)
 }
 renderCalendar()
 
@@ -107,11 +107,7 @@ prevmonth.addEventListener("click", function () {
         renderCalendar()
         headerCalendarDate.innerHTML = `${(monthNamesArr[month-1])}/${year}`
     }
-
-
     clickOnDays()
-
-
 })
 nextmonth.addEventListener("click", function () {
     if (month < 12) {
@@ -119,12 +115,8 @@ nextmonth.addEventListener("click", function () {
         myDate.setMonth(myDate.getMonth() + 1)
         renderCalendar()
         headerCalendarDate.innerHTML = `${(monthNamesArr[month-1])}/${year}`
-
-
     }
-
     clickOnDays()
-
 })
 
 
@@ -144,6 +136,8 @@ function clickOnDays() {
             } else {
                 el.childNodes[1].remove()
             }
+            console.log(clickedDates)
+
         })
 
     })
@@ -157,13 +151,6 @@ clickOnDays()
 function dateHasBeenClicked(cell) {
     let clickedDay = cell.childNodes[0].textContent
     clickedDay = parseInt(clickedDay)
-    console.log("elo")
-
-    clickedDates.forEach(el => {
-        el.push(clickedDay, month, year)
-        el.join("/")
-        console.log(el)
-        return el
-    })
-
+    clickedDates = [clickedDay, month, year]
+    return clickedDates
 }
