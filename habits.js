@@ -136,13 +136,12 @@ function clickOnDays() {
             } else {
                 el.childNodes[1].remove()
             }
-            console.log(clickedDates)
 
         })
 
     })
 
-
+    console.log(clickedDates)
 }
 
 clickOnDays()
@@ -151,6 +150,7 @@ clickOnDays()
 function dateHasBeenClicked(cell) {
     let clickedDay = cell.childNodes[0].textContent
     clickedDay = parseInt(clickedDay)
-    clickedDates = [clickedDay, month, year]
+    let clickedFullDate = [`${clickedDay}/${month}/${year}`]
+    clickedDates.push(clickedFullDate)
     return clickedDates
 }
