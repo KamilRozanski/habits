@@ -17,9 +17,11 @@ let year = myDate.getFullYear()
 
 
 let clickedDates = []
+let clickedDay = ""
 const monthNamesArr = ["January", "February", "March", "April", "May", "June", "July",
     "August", "September", "October", "November", "December"
 ];
+
 // welcome section
 sumbitButton.addEventListener("click", function (e) {
     if (input.value != "") {
@@ -77,7 +79,7 @@ function renderCalendar() {
     if (day && month && year) {
         selectCurrentDay()
     }
-    // console.log(clickedDates)
+
 }
 renderCalendar()
 
@@ -137,20 +139,39 @@ function clickOnDays() {
                 el.childNodes[1].remove()
             }
 
+            checkDatesAndAddTask()
         })
 
     })
 
-    console.log(clickedDates)
+
 }
 
 clickOnDays()
 
 
 function dateHasBeenClicked(cell) {
-    let clickedDay = cell.childNodes[0].textContent
-    clickedDay = parseInt(clickedDay)
-    let clickedFullDate = [`${clickedDay}/${month}/${year}`]
+    clickedDay = `${cell.childNodes[0].textContent}/${month}/${year}`
+    let clickedFullDate = [clickedDay]
     clickedDates.push(clickedFullDate)
     return clickedDates
+}
+
+function checkDatesAndAddTask() {
+    let allDatesInMonth = []
+
+    for (let i = 0; i < liDays.length; i++) {
+        allDatesInMonth.push(`${liDays[i].textContent}/${month}/${year}`)
+        console.log(allDatesInMonth[i], clickedDay)
+        if (clickedDates.flat().includes(allDatesInMonth[i])) {
+            // el.classList.add("habit__active")
+            // console.log(allDatesInMonth[i])
+        }
+        // console.log(clickedDates.flat(), (allDatesInMonth[i]))
+    }
+
+
+
+
+
 }
